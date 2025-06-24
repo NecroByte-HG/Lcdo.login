@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>LCDO®</title>
+</head>
+<body style="background-color: lightblue; text-align: center; margin-top: 50px; font-family: Arial, sans-serif;">
+
+    <h1 style="color:green; font-size:30px;">Greeting,<br>Welcome to LCDO®!</h1>
+    <h2>To start, please login!</h2>
+
+    <form onsubmit="checkLogin(event)">
+        Codename:<br>
+        <input type="text" id="codename"><br><br>
+        
+        Password:<br>(numbers written under the lines)<br>
+        <input type="password" id="password"><br><br>
+
+        <input type="reset">
+        <input type="submit" value="Login">
+    </form>
+
+    <p id="message" style="color: red; font-weight: bold;"></p>
+
+    <script>
+        function checkLogin(event) {
+            event.preventDefault();
+
+            const codename = document.getElementById("codename").value.trim().toLowerCase();
+            const password = document.getElementById("password").value.trim();
+
+            const validCodenames = ["hydrogen bond", "hydrogen nick"];
+            const validPasswords = ["2111", "2112"];
+
+            const message = document.getElementById("message");
+
+            if (validCodenames.includes(codename) && validPasswords.includes(password)) {
+                message.style.color = "green";
+                message.textContent = "Redirecting...";
+                setTimeout(() => {
+                    window.location.href = "welcome.html";
+                }, 500); // Redirect in 0.5 seconds
+            } else {
+                message.style.color = "red";
+                message.textContent = "Incorrect codename or password.";
+            }
+        }
+    </script>
+
+</body>
+</html>
